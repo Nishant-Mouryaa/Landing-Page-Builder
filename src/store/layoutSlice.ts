@@ -6,6 +6,47 @@ const initialState: pageData = {
     elements: {},
 };
 
+// Helper function to safely update nested objects
+function updateNestedObject(obj: any, path: string[], value: any) {
+    const newObj = { ...obj };
+    let current = newObj;
+    
+    for (let i = 0; i < path.length - 1; i++) {
+        const key = path[i];
+        if (!(key in current)) {
+            current[key] = {};
+        }
+        current = current[key];
+    }
+    
+    current[path[path.length - 1]] = value;
+    return newObj;
+}
+
+// Helper function to safely update array elements
+function updateArrayElementHelper(obj: any, path: string[], index: number, value: any) {
+    const newObj = { ...obj };
+    let current = newObj;
+    
+    for (let i = 0; i < path.length - 1; i++) {
+        const key = path[i];
+        if (!(key in current)) {
+            current[key] = {};
+        }
+        current = current[key];
+    }
+    
+    const arrayKey = path[path.length - 1];
+    if (!Array.isArray(current[arrayKey])) {
+        current[arrayKey] = [];
+    }
+    
+    current[arrayKey] = [...current[arrayKey]];
+    current[arrayKey][index] = { ...current[arrayKey][index], ...value };
+    
+    return newObj;
+}
+
 const layoutSlice = createSlice({
     name: "layout",
     initialState,
@@ -14,6 +55,90 @@ const layoutSlice = createSlice({
             state.styles = action.payload.styles;
             state.elements = action.payload.elements;
         },
+        
+        // Unified section update action
+        updateSection: (state, action: PayloadAction<{
+            section: string;
+            path: string[];
+            value: any;
+        }>) => {
+            const { section, path, value } = action.payload;
+            if (!state.elements[section]) {
+                state.elements[section] = {};
+            }
+            state.elements[section] = updateNestedObject(state.elements[section], path, value);
+        },
+        
+        // Unified array element update action
+        updateArrayElement: (state, action: PayloadAction<{
+            section: string;
+            path: string[];
+            index: number;
+            value: any;
+        }>) => {
+            const { section, path, index, value } = action.payload;
+            if (!state.elements[section]) {
+                state.elements[section] = {};
+            }
+            state.elements[section] = updateArrayElementHelper(state.elements[section], path, index, value);
+        },
+        
+        // Add element to array
+        addArrayElement: (state, action: PayloadAction<{
+            section: string;
+            path: string[];
+            value: any;
+        }>) => {
+            const { section, path, value } = action.payload;
+            if (!state.elements[section]) {
+                state.elements[section] = {};
+            }
+            
+            let current = state.elements[section];
+            for (let i = 0; i < path.length - 1; i++) {
+                const key = path[i];
+                if (!(key in current)) {
+                    current[key] = {};
+                }
+                current = current[key];
+            }
+            
+            const arrayKey = path[path.length - 1];
+            if (!Array.isArray(current[arrayKey])) {
+                current[arrayKey] = [];
+            }
+            current[arrayKey].push(value);
+        },
+        
+        // Remove element from array
+        removeArrayElement: (state, action: PayloadAction<{
+            section: string;
+            path: string[];
+            index: number;
+        }>) => {
+            const { section, path, index } = action.payload;
+            if (!state.elements[section]) return;
+            
+            let current = state.elements[section];
+            for (let i = 0; i < path.length - 1; i++) {
+                const key = path[i];
+                if (!(key in current)) return;
+                current = current[key];
+            }
+            
+            const arrayKey = path[path.length - 1];
+            if (Array.isArray(current[arrayKey]) && current[arrayKey][index]) {
+                current[arrayKey].splice(index, 1);
+            }
+        },
+        
+        // Load template action
+        loadTemplate: (state, action: PayloadAction<pageData>) => {
+            state.styles = action.payload.styles;
+            state.elements = action.payload.elements;
+        },
+        
+        // Legacy actions for backward compatibility (will be removed in future)
         updateNavbarActionLabel: (state, action: PayloadAction<string>) => {
             state.elements.navbar = state.elements.navbar || {};
             state.elements.navbar.actions = state.elements.navbar.actions || [];
@@ -50,7 +175,6 @@ const layoutSlice = createSlice({
             state.elements.navbar.logo = state.elements.navbar.logo || { src: "" };
             state.elements.navbar.logo.src = action.payload;
         },
-
         updateHeaderHeading: (state, action) => {
             state.elements.header = state.elements.header || {};
             state.elements.header.heading = action.payload;
@@ -73,7 +197,6 @@ const layoutSlice = createSlice({
             state.elements.header.ctaButton = state.elements.header.ctaButton || {};
             state.elements.header.ctaButton.link = action.payload;
         },
-
         updateFooterLogo: (state, action: PayloadAction<string>) => {
             state.elements.footer = state.elements.footer || {};
             state.elements.footer.logo = state.elements.footer.logo || { src: "" };
@@ -240,20 +363,24 @@ const layoutSlice = createSlice({
 
 export const {
     setLayout,
+    updateSection,
+    updateArrayElement,
+    addArrayElement,
+    removeArrayElement,
+    loadTemplate,
+    // Legacy actions
     updateNavbarActionLabel,
     updateNavbarLinkLabel,
     updateNavbarLinkTo,
     updateNavbarLinkAdd,
     updateNavbarLinkRemove,
     updateNavbarLogo,
-
     updateHeaderHeading,
     updateHeaderDescription,
     updateHeaderImage,
     updateHeaderActionButtonLabel,
     updateHeaderActionButtonLink,
     updateFooterLogo,
-
     updateFooterTitle,
     updateFooterDescription,
     updateFooterCopyRight,

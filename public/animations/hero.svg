@@ -1,0 +1,41 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc" rx="20"/>
+  
+  <!-- Animated Browser Window -->
+  <rect x="50" y="50" width="700" height="500" fill="white" rx="10" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Browser Controls -->
+  <circle cx="80" cy="80" r="8" fill="#f87171">
+    <animate attributeName="fill" values="#f87171;#fbbf24;#34d399;#60a5fa;#f87171" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="110" cy="80" r="8" fill="#fbbf24">
+    <animate attributeName="fill" values="#fbbf24;#34d399;#60a5fa;#f87171;#fbbf24" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="80" r="8" fill="#34d399">
+    <animate attributeName="fill" values="#34d399;#60a5fa;#f87171;#fbbf24;#34d399" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Content Blocks with Animation -->
+  <rect x="100" y="150" width="600" height="80" rx="5" fill="#e0f2fe">
+    <animate attributeName="width" values="600;550;600" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  
+  <rect x="100" y="250" width="250" height="200" rx="5" fill="#ede9fe">
+    <animate attributeName="y" values="250;240;250" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  
+  <rect x="380" y="250" width="250" height="100" rx="5" fill="#f0fdf4">
+    <animate attributeName="height" values="100;120;100" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  
+  <rect x="380" y="370" width="250" height="80" rx="5" fill="#fee2e2">
+    <animate attributeName="opacity" values="1;0.7;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- CTA Button Animation -->
+  <rect x="300" y="470" width="200" height="50" rx="25" fill="#3b82f6">
+    <animate attributeName="fill" values="#3b82f6;#2563eb;#1d4ed8;#3b82f6" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="400" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="16">Get Started</text>
+</svg>

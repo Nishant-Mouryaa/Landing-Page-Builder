@@ -1,0 +1,96 @@
+{
+  "id": "tech-startup",
+  "name": "Tech Startup Template",
+  "description": "Modern and clean design for tech companies and startups",
+  "category": "technology",
+  "styles": {
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#dbeafe"
+  },
+  "elements": {
+    "navbar": {
+      "logo": {
+        "src": ""
+      },
+      "links": [
+        { "label": "Features", "link": "#features" },
+        { "label": "Pricing", "link": "#pricing" },
+        { "label": "About", "link": "#about" }
+      ],
+      "actions": [
+        { "label": "Get Started", "link": "#signup" }
+      ]
+    },
+    "header": {
+      "heading": "Transform Your Business with [Your Product]",
+      "description": "The next-generation platform that helps businesses scale efficiently. Built for modern teams who demand excellence.",
+      "image": "",
+      "ctaButton": {
+        "label": "Start Free Trial",
+        "link": "#signup"
+      }
+    },
+    "services": {
+      "header": {
+        "title": "Why Choose Us",
+        "description": "Powerful features that drive results"
+      },
+      "section": [
+        {
+          "src": "",
+          "title": "Analytics Dashboard",
+          "description": "Real-time insights and powerful reporting",
+          "link": "#analytics"
+        },
+        {
+          "src": "",
+          "title": "Team Collaboration",
+          "description": "Seamless teamwork and communication",
+          "link": "#collaboration"
+        },
+        {
+          "src": "",
+          "title": "Security First",
+          "description": "Enterprise-grade security and compliance",
+          "link": "#security"
+        }
+      ]
+    },
+    "footer": {
+      "logo": {
+        "src": ""
+      },
+      "section": {
+        "main": {
+          "title": "[Your Company Name]",
+          "description": "Empowering businesses to achieve their full potential through innovative technology solutions.",
+          "ctaButton": {
+            "label": "Contact Sales",
+            "link": "#contact"
+          },
+          "copyright": "© 2024 [Your Company Name]. All rights reserved.",
+          "privacyAndPolicy": {
+            "label": "Privacy Policy",
+            "link": "/privacy"
+          }
+        },
+        "contact": {
+          "mail": "hello@yourcompany.com",
+          "phone": "+1 (555) 987-6543",
+          "address": "456 Innovation Drive, Tech City, CA 90210"
+        },
+        "social": [
+          { "label": "LinkedIn", "link": "https://linkedin.com" },
+          { "label": "Twitter", "link": "https://twitter.com" },
+          { "label": "GitHub", "link": "https://github.com" }
+        ],
+        "services": [
+          { "label": "Features", "link": "#features" },
+          { "label": "Pricing", "link": "#pricing" },
+          { "label": "Documentation", "link": "#docs" },
+          { "label": "Support", "link": "#support" }
+        ]
+      }
+    }
+  }
+} 

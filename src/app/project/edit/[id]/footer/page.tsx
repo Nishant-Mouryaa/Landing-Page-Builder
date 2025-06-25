@@ -1,49 +1,25 @@
 "use client";
 
 import * as z from "zod";
-import axios from "axios";
 import { useParams } from "next/navigation";
-
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import LinkFields from "@/components/form/link-fields";
-
 import { updateProjectLayoutAction } from "@/app/_actions/project";
 import { ImageElementStore } from "@/store/imageSlice";
-import {
-    updateFooterAddress,
-    updateFooterCopyRight,
-    updateFooterCtaButtonLabel,
-    updateFooterCtaButtonLink,
-    updateFooterDescription,
-    updateFooterLogo,
-    updateFooterMail,
-    updateFooterPhone,
-    updateFooterPrivacyAndPolicyLabel,
-    updateFooterPrivacyAndPolicyLink,
-    updateFooterServicesLinkAdd,
-    updateFooterServicesLinkLabel,
-    updateFooterServicesLinkRemove,
-    updateFooterServicesLinkTo,
-    updateFooterSocialLinkAdd,
-    updateFooterSocialLinkLabel,
-    updateFooterSocialLinkRemove,
-    updateFooterSocialLinkTo,
-    updateFooterTitle,
-} from "@/store/layoutSlice";
+import { updateSection } from "@/store/layoutSlice";
 import { layoutReducer } from "@/types/types";
-
 import { Loader2 } from "lucide-react";
 import cloneDeep from "lodash/cloneDeep";
 import ImageInput from "@/components/form/image-input";
 import TextInput from "@/components/form/text-input";
 import { footerFromSchema } from "@/lib/validations";
+import ImageService from "@/lib/image-service";
 
-export default function NavbarForm() {
+export default function FooterForm() {
     const params = useParams();
     const footer = useSelector((state: layoutReducer) => state.layout.elements.footer);
     const data = useSelector((state: layoutReducer) => state.layout);
@@ -80,8 +56,6 @@ export default function NavbarForm() {
         },
     };
 
-    console.log(defaultValues);
-
     const form = useForm<z.infer<typeof footerFromSchema>>({
         resolver: zodResolver(footerFromSchema),
         defaultValues,
@@ -103,15 +77,13 @@ export default function NavbarForm() {
 
     const uploadImage = async (image: Blob) => {
         try {
-            const formData = new FormData();
-            formData.append("file", image);
-            formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!);
-
-            const uploadURL = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
-
-            const response = await axios.post(uploadURL, formData).catch((err) => console.log(err));
-            dispatch(updateFooterLogo(response?.data?.secure_url));
-            return response?.data?.secure_url;
+            const url = await ImageService.upload(image);
+            dispatch(updateSection({
+                section: "footer",
+                path: ["logo", "src"],
+                value: url,
+            }));
+            return url;
         } catch (error) {
             console.log("[IMAGE_UPLOAD_ERROR]", error);
         }
@@ -129,14 +101,11 @@ export default function NavbarForm() {
             }
 
             const newData = cloneDeep(data);
-
             newData.elements.footer = newData.elements.footer || {};
             newData.elements.footer.logo = newData.elements.footer.logo || { src: "" };
             newData.elements.footer.logo.src = url;
 
             await updateProjectLayoutAction(params.id as string, newData);
-
-            console.log(newData);
         } catch (error) {
             console.log("[FOOTER_LAYOUT_SAVE_ERROR]", error);
         }
@@ -155,7 +124,7 @@ export default function NavbarForm() {
                 <TextInput
                     form={form}
                     fieldname="main.title"
-                    onChange={(value) => dispatch(updateFooterTitle(value))}
+                    onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "title"], value }))}
                     label="Title"
                     placeholder=""
                     description="This will be the title text of the footer."
@@ -164,24 +133,24 @@ export default function NavbarForm() {
                     <TextInput
                         form={form}
                         fieldname="ctaButton.label"
-                        onChange={(value) => dispatch(updateFooterCtaButtonLabel(value))}
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "ctaButton", "label"], value }))}
                         label="Button Label"
                         placeholder="CTA Button Label"
-                        description="This will be the label of you cta button."
+                        description="This will be the label of your cta button."
                     />
                     <TextInput
                         form={form}
                         fieldname="ctaButton.link"
-                        onChange={(value) => dispatch(updateFooterCtaButtonLink(value))}
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "ctaButton", "link"], value }))}
                         label="Button Link"
                         placeholder="CTA Button link"
-                        description="This will be the link of you cta button."
+                        description="This will be the link of your cta button."
                     />
                 </div>
                 <TextInput
                     form={form}
                     fieldname="main.description"
-                    onChange={(value) => dispatch(updateFooterDescription(value))}
+                    onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "description"], value }))}
                     label="Description"
                     placeholder=""
                     description="This will be the description text of the footer."
@@ -189,92 +158,74 @@ export default function NavbarForm() {
                 <TextInput
                     form={form}
                     fieldname="main.copyRight"
-                    onChange={(value) => dispatch(updateFooterCopyRight(value))}
+                    onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "copyright"], value }))}
                     label="Copy Right Label"
                     placeholder=""
-                    description="This will be the lable for copy right."
+                    description="This will be the label for copyright."
                 />
                 <div className="md:flex gap-4 w-full">
                     <TextInput
                         form={form}
                         fieldname="main.privacyAndPolicy.label"
-                        onChange={(value) => dispatch(updateFooterPrivacyAndPolicyLabel(value))}
-                        label="Privacy and policy Label"
-                        placeholder="Privacy and policy Label"
-                        description="This will be the label of you privacy and policy."
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "privacyAndPolicy", "label"], value }))}
+                        label="Privacy Policy Label"
+                        placeholder="Privacy Policy Label"
+                        description="Label for privacy policy."
                     />
                     <TextInput
                         form={form}
                         fieldname="main.privacyAndPolicy.link"
-                        onChange={(value) => dispatch(updateFooterPrivacyAndPolicyLink(value))}
-                        label="Privacy and policy Link"
-                        placeholder="Privacy and policy link"
-                        description="This will be the link of you privacy and policy."
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "main", "privacyAndPolicy", "link"], value }))}
+                        label="Privacy Policy Link"
+                        placeholder="Privacy Policy Link"
+                        description="Link for privacy policy."
                     />
                 </div>
-                <h3 className="pt-12 text-lg font-bold">Contact Informations</h3>
-                <TextInput
-                    form={form}
-                    fieldname="contact.mail"
-                    onChange={(value) => dispatch(updateFooterMail(value))}
-                    label="Mail"
-                    placeholder=""
-                    description="This will be the mail for contact."
-                />
-                <TextInput
-                    form={form}
-                    fieldname="contact.phone"
-                    onChange={(value) => dispatch(updateFooterPhone(value))}
-                    label="Phone"
-                    placeholder=""
-                    description="This will be the phone for contact."
-                />
-                <TextInput
-                    form={form}
-                    fieldname="contact.address"
-                    onChange={(value) => dispatch(updateFooterAddress(value))}
-                    label="Address"
-                    placeholder=""
-                    description="This will be the address for contact."
-                />
+                <div className="md:flex gap-4 w-full">
+                    <TextInput
+                        form={form}
+                        fieldname="contact.mail"
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "contact", "mail"], value }))}
+                        label="Contact Email"
+                        placeholder="Contact Email"
+                        description="Footer contact email."
+                    />
+                    <TextInput
+                        form={form}
+                        fieldname="contact.phone"
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "contact", "phone"], value }))}
+                        label="Contact Phone"
+                        placeholder="Contact Phone"
+                        description="Footer contact phone."
+                    />
+                    <TextInput
+                        form={form}
+                        fieldname="contact.address"
+                        onChange={(value) => dispatch(updateSection({ section: "footer", path: ["section", "contact", "address"], value }))}
+                        label="Contact Address"
+                        placeholder="Contact Address"
+                        description="Footer contact address."
+                    />
+                </div>
                 <LinkFields
                     form={form}
-                    valueArray={footer?.section?.social!}
-                    label="Socials"
-                    description="Add links to your socials."
                     fieldName="social"
-                    labelOnChange={(value, index) =>
-                        dispatch(updateFooterSocialLinkLabel({ value, index }))
-                    }
-                    linkOnChange={(value, index) =>
-                        dispatch(updateFooterSocialLinkTo({ value, index }))
-                    }
-                    removeFieldAction={(index) => dispatch(updateFooterSocialLinkRemove(index))}
-                    addFieldAction={() => dispatch(updateFooterSocialLinkAdd())}
+                    label="Social Links"
+                    description="Add your social links."
+                    links={footer?.section?.social || []}
+                    onChange={(links) => dispatch(updateSection({ section: "footer", path: ["section", "social"], value: links }))}
                 />
                 <LinkFields
                     form={form}
-                    valueArray={footer?.section?.services!}
-                    label="Services"
-                    description="Add links to the services."
                     fieldName="services"
-                    labelOnChange={(value, index) =>
-                        dispatch(updateFooterServicesLinkLabel({ value, index }))
-                    }
-                    linkOnChange={(value, index) =>
-                        dispatch(updateFooterServicesLinkTo({ value, index }))
-                    }
-                    removeFieldAction={(index) => dispatch(updateFooterServicesLinkRemove(index))}
-                    addFieldAction={() => dispatch(updateFooterServicesLinkAdd())}
+                    label="Services Links"
+                    description="Add your services links."
+                    links={footer?.section?.services || []}
+                    onChange={(links) => dispatch(updateSection({ section: "footer", path: ["section", "services"], value: links }))}
                 />
-                <Button disabled={isLoading} type="submit">
-                    {isLoading && (
-                        <>
-                            <Loader2 size={16} className="animate-spin" />
-                            &nbsp;
-                        </>
-                    )}
-                    Save
+                <Button type="submit" disabled={isLoading}>
+                    {isLoading ? <Loader2 className="animate-spin mr-2 h-4 w-4" /> : null}
+                    Save Footer
                 </Button>
             </form>
         </Form>

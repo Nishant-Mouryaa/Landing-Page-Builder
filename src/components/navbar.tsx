@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/context/firebase-auth-provider";
 import { usePathname } from "next/navigation";
 import Logo from "./logo";
 import UserMenu from "./user-menu";
@@ -12,13 +12,13 @@ import UserMenu from "./user-menu";
 type Props = {};
 
 const Navbar = (props: Props) => {
-    const { data: session } = useSession();
+    const { user } = useAuth();
     const pathname = usePathname();
     return (
         <header className="w-full py-4 md:py-6 flex justify-between items-center">
             <Logo />
             <div className="flex space-x-4">
-                {session?.user ? (
+                {user ? (
                     <>
                         {pathname !== "/dashboard" && (
                             <Link href="/dashboard">
@@ -30,7 +30,7 @@ const Navbar = (props: Props) => {
                 ) : (
                     <>
                         <ModeToggle />
-                        <Link href="/api/auth/signin">
+                        <Link href="/login">
                             <Button variant={"primary"}>Login</Button>
                         </Link>
                     </>

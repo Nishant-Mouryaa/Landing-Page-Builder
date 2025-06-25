@@ -1,0 +1,96 @@
+{
+  "id": "restaurant",
+  "name": "Restaurant Template",
+  "description": "Perfect for restaurants, cafes, and food businesses",
+  "category": "food",
+  "styles": {
+    "primaryColor": "#d97706",
+    "secondaryColor": "#fef3c7"
+  },
+  "elements": {
+    "navbar": {
+      "logo": {
+        "src": ""
+      },
+      "links": [
+        { "label": "Menu", "link": "#menu" },
+        { "label": "About", "link": "#about" },
+        { "label": "Contact", "link": "#contact" }
+      ],
+      "actions": [
+        { "label": "Reserve Table", "link": "#reserve" }
+      ]
+    },
+    "header": {
+      "heading": "Welcome to [Your Restaurant Name]",
+      "description": "Experience the finest dining with our carefully crafted menu and warm atmosphere. Perfect for any occasion.",
+      "image": "",
+      "ctaButton": {
+        "label": "View Menu",
+        "link": "#menu"
+      }
+    },
+    "services": {
+      "header": {
+        "title": "Our Services",
+        "description": "Discover what makes us special"
+      },
+      "section": [
+        {
+          "src": "",
+          "title": "Fine Dining",
+          "description": "Elegant atmosphere with gourmet cuisine",
+          "link": "#dining"
+        },
+        {
+          "src": "",
+          "title": "Catering",
+          "description": "Professional catering for events",
+          "link": "#catering"
+        },
+        {
+          "src": "",
+          "title": "Private Events",
+          "description": "Perfect venue for special occasions",
+          "link": "#events"
+        }
+      ]
+    },
+    "footer": {
+      "logo": {
+        "src": ""
+      },
+      "section": {
+        "main": {
+          "title": "[Your Restaurant Name]",
+          "description": "Bringing you the best dining experience since [Year]",
+          "ctaButton": {
+            "label": "Make Reservation",
+            "link": "#reserve"
+          },
+          "copyright": "© 2024 [Your Restaurant Name]. All rights reserved.",
+          "privacyAndPolicy": {
+            "label": "Privacy Policy",
+            "link": "/privacy"
+          }
+        },
+        "contact": {
+          "mail": "info@yourrestaurant.com",
+          "phone": "+1 (555) 123-4567",
+          "address": "123 Main Street, City, State 12345"
+        },
+        "social": [
+          { "label": "Facebook", "link": "https://facebook.com" },
+          { "label": "Instagram", "link": "https://instagram.com" },
+          { "label": "Twitter", "link": "https://twitter.com" }
+        ],
+        "services": [
+          { "label": "Dining", "link": "#dining" },
+          { "label": "Catering", "link": "#catering" },
+          { "label": "Events", "link": "#events" },
+          { "label": "Contact", "link": "#contact" }
+        ]
+      }
+    }
+  }
+} 

@@ -1,34 +1,24 @@
 "use client";
 
 import * as z from "zod";
-import axios from "axios";
 import { useParams } from "next/navigation";
-
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-
 import { updateProjectLayoutAction } from "@/app/_actions/project";
 import { ImageElementStore } from "@/store/imageSlice";
-import {
-    updateHeaderActionButtonLabel,
-    updateHeaderActionButtonLink,
-    updateHeaderDescription,
-    updateHeaderHeading,
-    updateHeaderImage,
-} from "@/store/layoutSlice";
+import { updateSection } from "@/store/layoutSlice";
 import { layoutReducer } from "@/types/types";
-
 import { Loader2 } from "lucide-react";
 import cloneDeep from "lodash/cloneDeep";
 import ImageInput from "@/components/form/image-input";
 import TextInput from "@/components/form/text-input";
 import { headerFromSchema } from "@/lib/validations";
+import ImageService from "@/lib/image-service";
 
-export default function NavbarForm() {
+export default function HeaderForm() {
     const params = useParams();
     const header = useSelector((state: layoutReducer) => state.layout.elements.header);
     const data = useSelector((state: layoutReducer) => state.layout);
@@ -64,15 +54,13 @@ export default function NavbarForm() {
 
     const uploadImage = async (image: Blob) => {
         try {
-            const formData = new FormData();
-            formData.append("file", image);
-            formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!);
-
-            const uploadURL = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
-
-            const response = await axios.post(uploadURL, formData).catch((err) => console.log(err));
-            dispatch(updateHeaderImage(response?.data?.secure_url));
-            return response?.data?.secure_url;
+            const url = await ImageService.upload(image);
+            dispatch(updateSection({
+                section: "header",
+                path: ["image"],
+                value: url,
+            }));
+            return url;
         } catch (error) {
             console.log("[IMAGE_UPLOAD_ERROR]", error);
         }
@@ -90,15 +78,12 @@ export default function NavbarForm() {
             }
 
             const newData = cloneDeep(data);
-
             newData.elements.header = newData.elements.header || {};
             newData.elements.header.image = url;
 
             await updateProjectLayoutAction(params.id as string, newData);
-
-            console.log(newData);
         } catch (error) {
-            console.log("[NAVBAR_LAYOUT_SAVE_ERROR]", error);
+            console.log("[HEADER_LAYOUT_SAVE_ERROR]", error);
         }
     }
 
@@ -116,7 +101,7 @@ export default function NavbarForm() {
                 <TextInput
                     form={form}
                     fieldname="heading"
-                    onChange={(value) => dispatch(updateHeaderHeading(value))}
+                    onChange={(value) => dispatch(updateSection({ section: "header", path: ["heading"], value }))}
                     label="Heading"
                     placeholder="Your Heading"
                     description="This will be the main text block of the header."
@@ -124,31 +109,29 @@ export default function NavbarForm() {
                 <TextInput
                     form={form}
                     fieldname="description"
-                    onChange={(value) => dispatch(updateHeaderDescription(value))}
+                    onChange={(value) => dispatch(updateSection({ section: "header", path: ["description"], value }))}
                     label="Description"
                     placeholder="Your Description"
                     description="This will be the secondary text block of the header."
                 />
-
                 <div className="md:flex gap-4 w-full">
                     <TextInput
                         form={form}
                         fieldname="ctaButton.label"
-                        onChange={(value) => dispatch(updateHeaderActionButtonLabel(value))}
+                        onChange={(value) => dispatch(updateSection({ section: "header", path: ["ctaButton", "label"], value }))}
                         label="Button Label"
                         placeholder="CTA Button Label"
-                        description="This will be the label of you cta button."
+                        description="This will be the label of your cta button."
                     />
                     <TextInput
                         form={form}
                         fieldname="ctaButton.link"
-                        onChange={(value) => dispatch(updateHeaderActionButtonLink(value))}
+                        onChange={(value) => dispatch(updateSection({ section: "header", path: ["ctaButton", "link"], value }))}
                         label="Button Link"
                         placeholder="CTA Button link"
-                        description="This will be the link of you cta button."
+                        description="This will be the link of your cta button."
                     />
                 </div>
-
                 <Button disabled={isLoading} type="submit">
                     {isLoading && (
                         <>

@@ -18,15 +18,23 @@ import {
 import UserAvatar from "./user-avatar";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
-import { User } from "next-auth";
 import { useTheme } from "next-themes";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/context/firebase-auth-provider";
 
 type Props = {};
 
 const UserMenu = ({}: Props) => {
     const { setTheme, theme } = useTheme();
-    const { data: session } = useSession();
+    const { user, signOutUser } = useAuth();
+    
+    const handleSignOut = async () => {
+        try {
+            await signOutUser();
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
+    };
+
     return (
         <Menubar className="border-0 p-0">
             <MenubarMenu>
@@ -34,12 +42,12 @@ const UserMenu = ({}: Props) => {
                     <UserAvatar />
                 </MenubarTrigger>
                 <MenubarContent side="bottom" align="end">
-                    {session?.user && (
+                    {user && (
                         <>
                             <MenubarItem disabled className="flex flex-col items-start pb-4 pr-4">
-                                <div className="">{session?.user.name}</div>
+                                <div className="">{user.displayName || 'User'}</div>
                                 <div className="text-xs text-zinc-500 dark:text-zinc-500">
-                                    {session?.user.email}
+                                    {user.email}
                                 </div>
                             </MenubarItem>
                             <MenubarSeparator />
@@ -72,9 +80,9 @@ const UserMenu = ({}: Props) => {
                         </MenubarSubContent>
                     </MenubarSub>
                     <MenubarSeparator />
-                    {session?.user && (
-                        <MenubarItem>
-                            <Link href="/api/auth/signout">Sign Out</Link>
+                    {user && (
+                        <MenubarItem onClick={handleSignOut}>
+                            Sign Out
                             <MenubarShortcut>
                                 <LogOut size={16} />
                             </MenubarShortcut>

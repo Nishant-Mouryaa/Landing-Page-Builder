@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import AuthProvider from "@/context/auth-provider";
+import { FirebaseAuthProvider } from "@/context/firebase-auth-provider";
+import { StoreProvider } from "@/store/store-provider";
 import TopLoadingBar from "@/components/top-loading-bar";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -17,17 +18,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AuthProvider>
-                    <TopLoadingBar />
-                    <Toaster />
+                <StoreProvider>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
                         enableSystem
                         disableTransitionOnChange>
-                        {children}
+                        <FirebaseAuthProvider>
+                            <TopLoadingBar />
+                            <Toaster />
+                            {children}
+                        </FirebaseAuthProvider>
                     </ThemeProvider>
-                </AuthProvider>
+                </StoreProvider>
             </body>
         </html>
     );

@@ -68,6 +68,7 @@ export type pageData = {
         header?: header;
         services?: services;
         footer?: footer;
+        [key: string]: any; // Allow dynamic section access
     };
 };
 

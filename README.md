@@ -37,7 +37,7 @@ Landerr is a powerful landing page builder application designed to convert visit
 - Live preview in the editor to see the landing page's appearance.
 - Publish option that changes the status of the landing page to "Live" (Public).
 - Explore page with a list all the published projects with option to preview it.
-- Google and GitHub authentication using Next Auth.
+- Google and GitHub authentication using Firebase Authentication.
 - Protected routes, making it accessible only to authenticated users.
 - State management using redux for handling landing pages and their components.
 - Form handling and validation using React Hook Form
@@ -53,7 +53,7 @@ Landerr is a powerful landing page builder application designed to convert visit
 - Shadcn-UI and TailwindCSS 
 - React Hook Form 
 - Cloudinary - Media storage
-- Next Auth and Drizzle-adapter - Google and Github login.
+- Firebase Authentication - Google and Github login.
 - Redux Toolkit - State management
 - Vercel - Deployment
 
@@ -77,24 +77,21 @@ Landerr is a powerful landing page builder application designed to convert visit
 	```bash
 	DATABASE_URL 				
 	
-	NEXTAUTH_URL=http://localhost:3000   	-- production https://example.com
-	NEXTAUTH_SECRET			
-	
-	GITHUB_ID
-	GITHUB_SECRET
-	
-	GOOGLE_CLIENT_ID
-	GOOGLE_CLIENT_SECRET
+	NEXT_PUBLIC_FIREBASE_API_KEY
+	NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+	NEXT_PUBLIC_FIREBASE_PROJECT_ID
+	NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+	NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+	NEXT_PUBLIC_FIREBASE_APP_ID
 	
 	NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 	NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
 	```
  	- `DATABASE_URL ` use a postgresdb connection string preferrably [Neon db](https://neon.tech/), it's free
-  	- `NEXTAUTH_URL`, `NEXTAUTH_SECRET`	- refer next-auth documentation [here.](https://next-auth.js.org/getting-started/example)
-   	- For `next-auth` providers refer [Google Provider](https://next-auth.js.org/providers/google) and [GitHub Provider](https://next-auth.js.org/providers/github)
-   	- You can customize the next-auth option in `src/app/api/auth/[...nextauth]/options.ts`
+  	- Firebase configuration - Create a Firebase project and get your config from [Firebase Console](https://console.firebase.google.com/)
+   	- For Firebase providers refer [Google Provider](https://firebase.google.com/docs/auth/web/google-signin) and [GitHub Provider](https://firebase.google.com/docs/auth/web/github-auth)
    	- Use [cloudinary](https://cloudinary.com/) for media storage. Once you create an account you will get the `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` from dashboard
-   	- Configure an upload preset `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` in [settings/upload](https://console.cloudinary.com/settings/)
+   	- Configure an upload preset `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` in [settings/upload](https://console.cloudinary.com/settings/upload)
 
 
 

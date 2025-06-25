@@ -9,17 +9,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
 import Loader from "@/components/loader";
-import { setLayout } from "@/store/layoutSlice";
+import { setLayout, loadTemplate } from "@/store/layoutSlice";
 import { useRouter } from "next/navigation";
 import { setCurrentProject } from "@/store/projectSlice";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Logo from "@/components/logo";
 import UserMenu from "@/components/user-menu";
 import { project, projectReducer } from "@/types/types";
 import { updateProjectPublishAction } from "@/app/_actions/project";
-import { Loader2 } from "lucide-react";
+import { Loader2, Palette } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import TemplateService from "@/lib/template-service";
 
 export default function NewLandingPageLayout({
     children,
@@ -49,9 +51,10 @@ export default function NewLandingPageLayout({
 
     const { toast } = useToast();
     const [project, setproject] = useState<project>();
-
+    const [templates, setTemplates] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isPublishing, setIsPublishing] = useState<boolean>(false);
+    const [isLoadingTemplates, setIsLoadingTemplates] = useState<boolean>(false);
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -74,8 +77,61 @@ export default function NewLandingPageLayout({
             setIsLoading(false);
         }
     };
+
+    const loadTemplates = async () => {
+        try {
+            setIsLoadingTemplates(true);
+            const templateList = await TemplateService.loadTemplates();
+            setTemplates(templateList);
+        } catch (error) {
+            console.error('Error loading templates:', error);
+            toast({
+                title: "Error",
+                description: "Failed to load templates",
+                variant: "destructive",
+            });
+        } finally {
+            setIsLoadingTemplates(false);
+        }
+    };
+
+    const handleTemplateChange = async (templateId: string) => {
+        try {
+            if (templateId === 'default') {
+                const defaultTemplate = TemplateService.getDefaultTemplate();
+                dispatch(loadTemplate(defaultTemplate));
+                toast({
+                    title: "Template Loaded",
+                    description: "Default template applied successfully",
+                });
+                return;
+            }
+
+            const template = await TemplateService.getTemplateById(templateId);
+            if (template) {
+                const templateData = {
+                    styles: template.styles,
+                    elements: template.elements,
+                };
+                dispatch(loadTemplate(templateData));
+                toast({
+                    title: "Template Loaded",
+                    description: `${template.name} template applied successfully`,
+                });
+            }
+        } catch (error) {
+            console.error('Error loading template:', error);
+            toast({
+                title: "Error",
+                description: "Failed to load template",
+                variant: "destructive",
+            });
+        }
+    };
+
     useEffect(() => {
         getProjectDetails(params.id);
+        loadTemplates();
     }, [params.id]);
 
     const handlePublish = async () => {
@@ -118,7 +174,25 @@ export default function NewLandingPageLayout({
                         <TabsTrigger value="preview">Preview</TabsTrigger>
                     </TabsList>
 
-                    <div className="flex space-x-6 items-center w-fit">
+                    <div className="flex space-x-4 items-center w-fit">
+                        {/* Template Selector */}
+                        <div className="flex items-center space-x-2">
+                            <Palette className="h-4 w-4 text-muted-foreground" />
+                            <Select onValueChange={handleTemplateChange} disabled={isLoadingTemplates}>
+                                <SelectTrigger className="w-[180px]">
+                                    <SelectValue placeholder={isLoadingTemplates ? "Loading..." : "Choose Template"} />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="default">Default Template</SelectItem>
+                                    {templates.map((template) => (
+                                        <SelectItem key={template.id} value={template.id}>
+                                            {template.name}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
                         <Button
                             onClick={handlePublish}
                             className="flex items-center"

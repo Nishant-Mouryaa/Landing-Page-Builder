@@ -1,96 +1,296 @@
 {
-  "id": "tech-startup",
-  "name": "Tech Startup Template",
-  "description": "Modern and clean design for tech companies and startups",
+  "id": "tech-startup-modern",
+  "name": "Modern Tech Startup",
+  "description": "Clean, modern template perfect for SaaS companies, tech startups, and digital agencies. Features product showcase and pricing tiers.",
   "category": "technology",
+  "tags": ["startup", "saas", "technology", "modern", "clean", "business"],
+  "author": "Digital Design Co",
+  "version": "2.1.0",
+  "createdAt": "2024-01-20T09:15:00Z",
+  "updatedAt": "2024-03-01T11:45:00Z",
+  "isPremium": false,
+  "rating": 4.9,
+  "usageCount": 287,
+  "thumbnail": "/templates/tech-startup-thumb.jpg",
+  "previewUrl": "/templates/tech-startup/preview",
   "styles": {
-    "primaryColor": "#3b82f6",
-    "secondaryColor": "#dbeafe"
+    "primaryColor": "#4f46e5",
+    "secondaryColor": "#e0e7ff",
+    "accentColor": "#06d6a0",
+    "backgroundColor": "#ffffff",
+    "textColor": "#1f2937",
+    "fontFamily": "Inter, sans-serif",
+    "borderRadius": "12px",
+    "spacing": "20px"
   },
   "elements": {
     "navbar": {
       "logo": {
-        "src": ""
+        "src": "/images/tech-logo.svg",
+        "alt": "TechFlow"
       },
       "links": [
+        { "label": "Product", "link": "#product" },
         { "label": "Features", "link": "#features" },
         { "label": "Pricing", "link": "#pricing" },
-        { "label": "About", "link": "#about" }
+        { "label": "About", "link": "#about" },
+        { "label": "Contact", "link": "#contact" }
       ],
       "actions": [
-        { "label": "Get Started", "link": "#signup" }
-      ]
+        { 
+          "label": "Start Free Trial", 
+          "link": "#signup", 
+          "type": "primary" 
+        }
+      ],
+      "sticky": true,
+      "transparent": false
     },
     "header": {
-      "heading": "Transform Your Business with [Your Product]",
-      "description": "The next-generation platform that helps businesses scale efficiently. Built for modern teams who demand excellence.",
-      "image": "",
+      "heading": "Streamline Your Workflow",
+      "subheading": "The Future of Productivity",
+      "description": "TechFlow revolutionizes how teams collaborate and manage projects. Boost productivity by 40% with our AI-powered platform designed for modern businesses.",
+      "image": "/images/tech-hero-dashboard.png",
+      "backgroundImage": "",
+      "overlay": false,
+      "alignment": "left",
       "ctaButton": {
         "label": "Start Free Trial",
-        "link": "#signup"
+        "link": "#signup",
+        "style": "primary"
+      },
+      "secondaryButton": {
+        "label": "Watch Demo",
+        "link": "#demo",
+        "style": "secondary"
       }
+    },
+    "features": {
+      "header": {
+        "title": "Powerful Features for Modern Teams",
+        "description": "Everything you need to manage your projects efficiently"
+      },
+      "items": [
+        {
+          "icon": "🤖",
+          "title": "AI-Powered Insights",
+          "description": "Get intelligent recommendations and automated task prioritization"
+        },
+        {
+          "icon": "⚡",
+          "title": "Real-time Collaboration",
+          "description": "Work together seamlessly with live updates and instant notifications"
+        },
+        {
+          "icon": "📊",
+          "title": "Advanced Analytics",
+          "description": "Track performance with detailed reports and customizable dashboards"
+        },
+        {
+          "icon": "🔒",
+          "title": "Enterprise Security",
+          "description": "Bank-level encryption and compliance with industry standards"
+        },
+        {
+          "icon": "🔄",
+          "title": "Seamless Integrations",
+          "description": "Connect with 100+ tools including Slack, GitHub, and Google Workspace"
+        },
+        {
+          "icon": "📱",
+          "title": "Mobile First",
+          "description": "Native mobile apps for iOS and Android with offline capabilities"
+        }
+      ]
     },
     "services": {
       "header": {
-        "title": "Why Choose Us",
-        "description": "Powerful features that drive results"
+        "title": "Solutions for Every Team",
+        "description": "Tailored workflows for different departments and use cases"
       },
       "section": [
         {
-          "src": "",
-          "title": "Analytics Dashboard",
-          "description": "Real-time insights and powerful reporting",
-          "link": "#analytics"
+          "title": "Project Management",
+          "description": "Organize tasks, set deadlines, and track progress with ease",
+          "image": "/images/project-management.png",
+          "features": ["Kanban Boards", "Gantt Charts", "Time Tracking", "Resource Planning"]
         },
         {
-          "src": "",
           "title": "Team Collaboration",
-          "description": "Seamless teamwork and communication",
-          "link": "#collaboration"
+          "description": "Built-in chat, file sharing, and video conferencing tools",
+          "image": "/images/collaboration.png",
+          "features": ["Team Chat", "File Sharing", "Video Calls", "Screen Sharing"]
         },
         {
-          "src": "",
-          "title": "Security First",
-          "description": "Enterprise-grade security and compliance",
-          "link": "#security"
+          "title": "Workflow Automation",
+          "description": "Automate repetitive tasks and create custom workflows",
+          "image": "/images/automation.png",
+          "features": ["Custom Triggers", "Automated Actions", "Rule Builder", "API Integration"]
         }
+      ]
+    },
+    "testimonials": {
+      "header": {
+        "title": "Trusted by Industry Leaders",
+        "description": "See how companies are transforming their workflows"
+      },
+      "items": [
+        {
+          "name": "Alex Thompson",
+          "role": "CTO at InnovateCorp",
+          "company": "InnovateCorp",
+          "content": "TechFlow has transformed how our development team works. We've reduced project delivery time by 35% and our team satisfaction has never been higher.",
+          "rating": 5,
+          "avatar": "/images/testimonial-alex.jpg",
+          "logo": "/images/company-innovate.png"
+        },
+        {
+          "name": "Maria Garcia",
+          "role": "Operations Director",
+          "company": "ScaleUp Solutions",
+          "content": "The AI insights feature is game-changing. It helps us identify bottlenecks before they become problems and optimize our resource allocation.",
+          "rating": 5,
+          "avatar": "/images/testimonial-maria.jpg",
+          "logo": "/images/company-scaleup.png"
+        },
+        {
+          "name": "David Kim",
+          "role": "Product Manager",
+          "company": "TechVenture",
+                    "content": "Finally, a platform that brings together all our tools in one place. The integrations work flawlessly and the mobile app is outstanding.",
+          "rating": 5,
+          "avatar": "/images/testimonial-david.jpg",
+          "logo": "/images/company-techventure.png"
+        }
+      ]
+    },
+    "pricing": {
+      "header": {
+        "title": "Simple, Transparent Pricing",
+        "description": "Choose the plan that scales with your business"
+      },
+      "plans": [
+        {
+          "name": "Starter",
+          "price": 0,
+          "period": "month",
+          "description": "Perfect for small teams getting started",
+          "features": [
+            "Up to 5 team members",
+            "10 projects",
+            "Basic reporting",
+            "Email support",
+            "5GB storage"
+          ],
+          "highlighted": false,
+          "ctaText": "Start Free",
+          "ctaLink": "#signup-starter"
+        },
+        {
+          "name": "Professional",
+          "price": 29,
+          "period": "month",
+          "description": "Advanced features for growing teams",
+          "features": [
+            "Up to 25 team members",
+            "Unlimited projects",
+            "Advanced analytics",
+            "Priority support",
+            "100GB storage",
+            "Custom workflows",
+            "API access"
+          ],
+          "highlighted": true,
+          "ctaText": "Start 14-day Trial",
+          "ctaLink": "#signup-pro"
+        },
+        {
+          "name": "Enterprise",
+          "price": 99,
+          "period": "month",
+          "description": "Complete solution for large organizations",
+          "features": [
+            "Unlimited team members",
+            "Unlimited projects",
+            "Custom reporting",
+            "24/7 phone support",
+            "Unlimited storage",
+            "Advanced security",
+            "Custom integrations",
+            "Dedicated account manager"
+          ],
+          "highlighted": false,
+          "ctaText": "Contact Sales",
+          "ctaLink": "#contact-sales"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Transform Your Workflow?",
+      "description": "Join thousands of teams who have already revolutionized their productivity with TechFlow",
+      "button": {
+        "label": "Start Your Free Trial",
+        "link": "#signup"
+      },
+      "backgroundImage": "/images/tech-cta-bg.jpg",
+      "overlay": true,
+      "stats": [
+        { "number": "50K+", "label": "Active Users" },
+        { "number": "99.9%", "label": "Uptime" },
+        { "number": "40%", "label": "Productivity Boost" }
       ]
     },
     "footer": {
       "logo": {
-        "src": ""
+        "src": "/images/tech-logo-white.svg",
+        "alt": "TechFlow"
       },
       "section": {
         "main": {
-          "title": "[Your Company Name]",
-          "description": "Empowering businesses to achieve their full potential through innovative technology solutions.",
-          "ctaButton": {
-            "label": "Contact Sales",
-            "link": "#contact"
-          },
-          "copyright": "© 2024 [Your Company Name]. All rights reserved.",
+          "title": "TechFlow",
+          "description": "Empowering teams worldwide to achieve more through intelligent workflow automation and seamless collaboration.",
+          "copyright": "© 2024 TechFlow Inc. All rights reserved.",
           "privacyAndPolicy": {
             "label": "Privacy Policy",
             "link": "/privacy"
+          },
+          "termsOfService": {
+            "label": "Terms of Service",
+            "link": "/terms"
           }
         },
         "contact": {
-          "mail": "hello@yourcompany.com",
-          "phone": "+1 (555) 987-6543",
-          "address": "456 Innovation Drive, Tech City, CA 90210"
+          "mail": "hello@techflow.com",
+          "phone": "+1 (555) 123-TECH",
+          "address": "456 Innovation Drive, Silicon Valley, CA 94043",
+          "hours": "Mon-Fri 9AM-6PM PST"
         },
         "social": [
-          { "label": "LinkedIn", "link": "https://linkedin.com" },
-          { "label": "Twitter", "link": "https://twitter.com" },
-          { "label": "GitHub", "link": "https://github.com" }
+          { "label": "Twitter", "link": "https://twitter.com/techflow", "icon": "twitter" },
+          { "label": "LinkedIn", "link": "https://linkedin.com/company/techflow", "icon": "linkedin" },
+          { "label": "GitHub", "link": "https://github.com/techflow", "icon": "github" },
+          { "label": "YouTube", "link": "https://youtube.com/techflow", "icon": "youtube" }
         ],
         "services": [
-          { "label": "Features", "link": "#features" },
-          { "label": "Pricing", "link": "#pricing" },
-          { "label": "Documentation", "link": "#docs" },
-          { "label": "Support", "link": "#support" }
+          { "label": "Project Management", "link": "/features/project-management" },
+          { "label": "Team Collaboration", "link": "/features/collaboration" },
+          { "label": "Workflow Automation", "link": "/features/automation" },
+          { "label": "Analytics", "link": "/features/analytics" }
+        ],
+        "quickLinks": [
+          { "label": "Documentation", "link": "/docs" },
+          { "label": "API Reference", "link": "/api" },
+          { "label": "Status Page", "link": "/status" },
+          { "label": "Changelog", "link": "/changelog" }
         ]
+      },
+      "newsletter": {
+        "title": "Stay Updated",
+        "description": "Get the latest product updates, feature releases, and productivity tips.",
+        "placeholder": "Enter your work email",
+        "buttonText": "Subscribe",
+        "privacyText": "We respect your privacy. Unsubscribe anytime."
       }
     }
   }
-} 
+}

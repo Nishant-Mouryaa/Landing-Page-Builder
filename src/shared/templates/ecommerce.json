@@ -1,0 +1,336 @@
+{
+  "id": "ecommerce-modern",
+  "name": "Modern E-commerce Store",
+  "description": "Complete e-commerce template with product showcases, shopping features, and conversion-optimized design. Perfect for online retailers.",
+  "category": "ecommerce",
+  "tags": ["ecommerce", "shopping", "retail", "store", "products", "business"],
+  "author": "Commerce Pro",
+  "version": "2.0.0",
+  "createdAt": "2024-01-25T11:00:00Z",
+  "updatedAt": "2024-03-10T15:30:00Z",
+  "isPremium": true,
+  "rating": 4.8,
+  "usageCount": 142,
+  "thumbnail": "/templates/ecommerce-thumb.jpg",
+  "previewUrl": "/templates/ecommerce/preview",
+  "styles": {
+    "primaryColor": "#2563eb",
+    "secondaryColor": "#f1f5f9",
+    "accentColor": "#f59e0b",
+    "backgroundColor": "#ffffff",
+    "textColor": "#1e293b",
+    "fontFamily": "Roboto, sans-serif",
+    "borderRadius": "6px",
+    "spacing": "16px"
+  },
+  "elements": {
+    "navbar": {
+      "logo": {
+        "src": "/images/ecommerce-logo.svg",
+        "alt": "ShopHub"
+      },
+      "links": [
+        { "label": "Shop", "link": "#shop" },
+        { "label": "Categories", "link": "#categories" },
+        { "label": "Deals", "link": "#deals" },
+        { "label": "About", "link": "#about" },
+        { "label": "Support", "link": "#support" }
+      ],
+      "actions": [
+        { 
+          "label": "Sign In", 
+          "link": "#signin", 
+          "type": "secondary" 
+        },
+        { 
+          "label": "Cart (0)", 
+          "link": "#cart", 
+          "type": "primary" 
+        }
+      ],
+      "sticky": true,
+      "transparent": false,
+      "searchBar": true
+    },
+    "header": {
+      "heading": "Discover Your Style",
+      "subheading": "Premium Fashion & Lifestyle",
+      "description": "Shop the latest trends in fashion, electronics, and home decor. Free shipping on orders over $50 and easy 30-day returns.",
+      "image": "/images/ecommerce-hero-products.jpg",
+      "backgroundImage": "/images/ecommerce-hero-bg.jpg",
+      "overlay": true,
+      "alignment": "center",
+      "ctaButton": {
+        "label": "Shop Now",
+        "link": "#shop",
+        "style": "primary"
+      },
+      "secondaryButton": {
+        "label": "View Deals",
+        "link": "#deals",
+        "style": "secondary"
+      },
+      "announcement": {
+        "text": "🎉 Flash Sale: Up to 50% Off - Limited Time!",
+        "link": "#deals"
+      }
+    },
+    "features": {
+      "header": {
+        "title": "Why Shop With Us",
+        "description": "Your satisfaction is our top priority"
+      },
+      "items": [
+        {
+          "icon": "🚚",
+          "title": "Free Shipping",
+          "description": "Free delivery on orders over $50 nationwide"
+        },
+        {
+          "icon": "↩️",
+          "title": "Easy Returns",
+          "description": "30-day hassle-free return policy"
+        },
+        {
+          "icon": "🔒",
+          "title": "Secure Payment",
+          "description": "Your payment information is always protected"
+        },
+        {
+          "icon": "💬",
+          "title": "24/7 Support",
+          "description": "Customer service available around the clock"
+        },
+        {
+          "icon": "⚡",
+          "title": "Fast Delivery",
+          "description": "Same-day delivery available in select areas"
+        },
+        {
+          "icon": "🏆",
+          "title": "Quality Guarantee",
+          "description": "Premium products from trusted brands"
+        }
+      ]
+    },
+    "services": {
+      "header": {
+        "title": "Featured Categories",
+        "description": "Explore our most popular product categories"
+      },
+      "section": [
+        {
+          "title": "Fashion & Apparel",
+          "description": "Trendy clothing for men, women, and kids",
+          "image": "/images/category-fashion.jpg",
+          "itemCount": "2,500+ items",
+          "link": "/category/fashion",
+          "badge": "New Arrivals"
+        },
+        {
+          "title": "Electronics & Tech",
+          "description": "Latest gadgets and electronic devices",
+          "image": "/images/category-electronics.jpg",
+          "itemCount": "1,800+ items",
+          "link": "/category/electronics",
+          "badge": "Best Sellers"
+        },
+        {
+          "title": "Home & Garden",
+          "description": "Everything for your home and outdoor space",
+          "image": "/images/category-home.jpg",
+          "itemCount": "3,200+ items",
+          "link": "/category/home",
+          "badge": "Sale"
+        },
+        {
+          "title": "Sports & Fitness",
+          "description": "Athletic wear and fitness equipment",
+          "image": "/images/category-sports.jpg",
+          "itemCount": "1,500+ items",
+          "link": "/category/sports",
+          "badge": "Trending"
+        }
+      ]
+    },
+    "testimonials": {
+      "header": {
+        "title": "Customer Reviews",
+        "description": "What our customers are saying"
+      },
+      "items": [
+        {
+          "name": "Emma Thompson",
+          "role": "Verified Buyer",
+          "content": "Amazing quality and super fast delivery! The dress fits perfectly and looks exactly like the photos. Will definitely shop here again.",
+          "rating": 5,
+          "avatar": "/images/customer-emma.jpg",
+          "purchaseInfo": "Purchased: Summer Dress",
+          "verified": true
+        },
+        {
+          "name": "James Wilson",
+          "role": "Verified Buyer",
+          "content": "Great customer service and the return process was seamless. The product quality exceeded my expectations for the price point.",
+          "rating": 5,
+          "avatar": "/images/customer-james.jpg",
+          "purchaseInfo": "Purchased: Wireless Headphones",
+          "verified": true
+        },
+        {
+          "name": "Lisa Rodriguez",
+          "role": "Verified Buyer",
+          "content": "Love the variety of products available. The website is easy to navigate and checkout was quick and secure. Highly recommended!",
+          "rating": 5,
+          "avatar": "/images/customer-lisa.jpg",
+          "purchaseInfo": "Purchased: Home Decor Set",
+          "verified": true
+        }
+      ]
+    },
+    "pricing": {
+      "header": {
+        "title": "Membership Plans",
+        "description": "Get exclusive benefits with our membership programs"
+      },
+      "plans": [
+        {
+          "name": "Basic",
+          "price": 0,
+          "period": "month",
+          "description": "Perfect for occasional shoppers",
+          "features": [
+            "Standard shipping rates",
+            "Access to sales",
+            "Customer support",
+            "Product reviews"
+          ],
+          "highlighted": false,
+          "ctaText": "Shop Now",
+          "ctaLink": "#shop"
+        },
+        {
+          "name": "Prime",
+          "price": 9.99,
+          "period": "month",
+          "description": "Best value for regular shoppers",
+          "features": [
+            "Free shipping on all orders",
+            "Early access to sales",
+            "Priority customer support",
+            "Exclusive member deals",
+            "Free returns",
+            "Same-day delivery"
+          ],
+          "highlighted": true,
+          "ctaText": "Start Free Trial",
+          "ctaLink": "#prime-signup",
+          "badge": "Most Popular"
+        },
+        {
+          "name": "VIP",
+          "price": 19.99,
+          "period": "month",
+          "description": "Ultimate shopping experience",
+          "features": [
+                       "All Prime benefits",
+            "Personal shopping assistant",
+            "VIP customer service",
+            "Exclusive product access",
+            "Birthday discounts",
+            "Premium gift wrapping",
+            "Concierge services",
+            "Invitation to exclusive events"
+          ],
+          "highlighted": false,
+          "ctaText": "Go VIP",
+          "ctaLink": "#vip-signup"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Start Shopping?",
+      "description": "Join millions of satisfied customers and discover amazing products at unbeatable prices",
+      "button": {
+        "label": "Browse Products",
+        "link": "#shop"
+      },
+      "backgroundImage": "/images/ecommerce-cta-bg.jpg",
+      "overlay": true,
+      "stats": [
+        { "number": "1M+", "label": "Happy Customers" },
+        { "number": "50K+", "label": "Products" },
+        { "number": "99.2%", "label": "Satisfaction Rate" }
+      ],
+      "trustBadges": [
+        { "name": "SSL Secure", "icon": "/images/ssl-badge.png" },
+        { "name": "Money Back", "icon": "/images/moneyback-badge.png" },
+        { "name": "Fast Shipping", "icon": "/images/shipping-badge.png" }
+      ]
+    },
+    "footer": {
+      "logo": {
+        "src": "/images/ecommerce-logo-white.svg",
+        "alt": "ShopHub"
+      },
+      "section": {
+        "main": {
+          "title": "ShopHub",
+          "description": "Your one-stop destination for quality products at amazing prices. Shop with confidence and enjoy exceptional customer service.",
+          "copyright": "© 2024 ShopHub Inc. All rights reserved.",
+          "privacyAndPolicy": {
+            "label": "Privacy Policy",
+            "link": "/privacy"
+          },
+          "termsOfService": {
+            "label": "Terms of Service",
+            "link": "/terms"
+          }
+        },
+        "contact": {
+          "mail": "support@shophub.com",
+          "phone": "+1 (555) 123-SHOP",
+          "address": "123 Commerce Ave, Retail City, RC 12345",
+          "hours": "Customer Service: 24/7"
+        },
+        "social": [
+          { "label": "Facebook", "link": "https://facebook.com/shophub", "icon": "facebook" },
+          { "label": "Instagram", "link": "https://instagram.com/shophub", "icon": "instagram" },
+          { "label": "Twitter", "link": "https://twitter.com/shophub", "icon": "twitter" },
+          { "label": "YouTube", "link": "https://youtube.com/shophub", "icon": "youtube" }
+        ],
+        "services": [
+          { "label": "Fashion", "link": "/category/fashion" },
+          { "label": "Electronics", "link": "/category/electronics" },
+          { "label": "Home & Garden", "link": "/category/home" },
+          { "label": "Sports", "link": "/category/sports" }
+        ],
+        "quickLinks": [
+          { "label": "Track Order", "link": "/track-order" },
+          { "label": "Returns", "link": "/returns" },
+          { "label": "Size Guide", "link": "/size-guide" },
+          { "label": "Gift Cards", "link": "/gift-cards" }
+        ],
+        "customerService": [
+          { "label": "Help Center", "link": "/help" },
+          { "label": "Contact Us", "link": "/contact" },
+          { "label": "Shipping Info", "link": "/shipping" },
+          { "label": "Payment Methods", "link": "/payment" }
+        ]
+      },
+      "newsletter": {
+        "title": "Exclusive Offers",
+        "description": "Be the first to know about sales, new arrivals, and exclusive member deals.",
+        "placeholder": "Enter your email for deals",
+        "buttonText": "Subscribe & Save",
+        "privacyText": "Unsubscribe anytime. We respect your privacy.",
+        "discount": "Get 10% off your first order!"
+      },
+      "trustSeals": [
+        { "name": "Better Business Bureau", "image": "/images/bbb-seal.png" },
+        { "name": "Trustpilot", "image": "/images/trustpilot-seal.png" },
+        { "name": "Norton Secured", "image": "/images/norton-seal.png" }
+      ]
+    }
+  }
+}

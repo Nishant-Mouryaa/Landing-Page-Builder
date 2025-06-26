@@ -1,0 +1,217 @@
+{
+  "id": "creative-agency",
+  "name": "Creative Agency Pro",
+  "description": "Bold and creative template for digital agencies, design studios, and marketing companies. Showcases portfolio and team expertise.",
+  "category": "agency",
+  "tags": ["agency", "creative", "design", "marketing", "portfolio", "professional"],
+  "author": "Creative Studios",
+  "version": "1.5.0",
+  "createdAt": "2024-02-01T12:00:00Z",
+  "updatedAt": "2024-03-15T16:20:00Z",
+  "isPremium": true,
+  "rating": 4.7,
+  "usageCount": 89,
+  "thumbnail": "/templates/agency-thumb.jpg",
+  "previewUrl": "/templates/agency/preview",
+  "styles": {
+    "primaryColor": "#ff6b6b",
+    "secondaryColor": "#4ecdc4",
+    "accentColor": "#45b7d1",
+    "backgroundColor": "#ffffff",
+    "textColor": "#2c3e50",
+    "fontFamily": "Poppins, sans-serif",
+    "borderRadius": "8px",
+    "spacing": "32px"
+  },
+  "elements": {
+    "navbar": {
+      "logo": {
+        "src": "/images/agency-logo.svg",
+        "alt": "Pixel Perfect Agency"
+      },
+      "links": [
+        { "label": "Home", "link": "#home" },
+        { "label": "Services", "link": "#services" },
+        { "label": "Portfolio", "link": "#portfolio" },
+        { "label": "Team", "link": "#team" },
+        { "label": "Contact", "link": "#contact" }
+      ],
+      "actions": [
+        { 
+          "label": "Get Quote", 
+          "link": "#quote", 
+          "type": "primary" 
+        }
+      ],
+      "sticky": true,
+      "transparent": false
+    },
+    "header": {
+      "heading": "We Create Digital Experiences",
+      "subheading": "Award-Winning Creative Agency",
+      "description": "Transforming brands through innovative design and strategic thinking. We craft digital experiences that captivate audiences and drive results.",
+      "image": "/images/agency-hero-creative.png",
+      "backgroundImage": "/images/agency-bg-pattern.svg",
+      "overlay": false,
+      "alignment": "center",
+      "ctaButton": {
+        "label": "View Our Work",
+        "link": "#portfolio",
+        "style": "primary"
+      },
+      "secondaryButton": {
+        "label": "Start a Project",
+        "link": "#contact",
+        "style": "secondary"
+      }
+    },
+    "features": {
+      "header": {
+        "title": "Why Choose Pixel Perfect",
+        "description": "We combine creativity with strategy to deliver exceptional results"
+      },
+      "items": [
+        {
+          "icon": "🎨",
+          "title": "Creative Excellence",
+          "description": "Award-winning designs that stand out in the digital landscape"
+        },
+        {
+          "icon": "🚀",
+          "title": "Strategic Approach",
+          "description": "Data-driven strategies that align with your business objectives"
+        },
+        {
+          "icon": "⚡",
+          "title": "Rapid Delivery",
+          "description": "Fast turnaround times without compromising on quality"
+        },
+        {
+          "icon": "🤝",
+          "title": "Collaborative Process",
+          "description": "We work closely with you throughout every stage of the project"
+        }
+      ]
+    },
+    "services": {
+      "header": {
+        "title": "Our Creative Services",
+        "description": "Full-stack digital solutions for modern brands"
+      },
+      "section": [
+        {
+          "title": "Brand Identity Design",
+          "description": "Complete brand packages including logos, guidelines, and visual identity systems",
+          "image": "/images/branding-service.jpg",
+          "features": ["Logo Design", "Brand Guidelines", "Color Palettes", "Typography"]
+        },
+        {
+          "title": "Web Design & Development",
+          "description": "Custom websites and web applications built for performance and user experience",
+          "image": "/images/web-design-service.jpg",
+          "features": ["Responsive Design", "Custom Development", "CMS Integration", "E-commerce"]
+        },
+        {
+          "title": "Digital Marketing",
+          "description": "Comprehensive marketing strategies to grow your online presence",
+          "image": "/images/marketing-service.jpg",
+          "features": ["SEO Optimization", "Social Media", "PPC Campaigns", "Content Strategy"]
+        },
+        {
+          "title": "UI/UX Design",
+          "description": "User-centered design for mobile apps and web applications",
+          "image": "/images/ux-design-service.jpg",
+          "features": ["User Research", "Wireframing", "Prototyping", "Usability Testing"]
+        }
+      ]
+    },
+    "testimonials": {
+      "header": {
+        "title": "Client Success Stories",
+        "description": "What our clients say about working with us"
+      },
+      "items": [
+        {
+          "name": "Jennifer Walsh",
+          "role": "Marketing Director",
+          "company": "TechStartup Inc",
+          "content": "Pixel Perfect transformed our brand identity completely. The new design has increased our conversion rates by 65% and we've received countless compliments.",
+          "rating": 5,
+          "avatar": "/images/client-jennifer.jpg",
+          "logo": "/images/client-techstartup-logo.png"
+        },
+        {
+          "name": "Robert Chen",
+          "role": "CEO",
+          "company": "Green Solutions",
+          "content": "The team's creativity and professionalism exceeded our expectations. They delivered a website that perfectly captures our company's mission and values.",
+          "rating": 5,
+          "avatar": "/images/client-robert.jpg",
+          "logo": "/images/client-greensolutions-logo.png"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Start Your Next Project?",
+      "description": "Let's create something amazing together. Get in touch to discuss your project requirements.",
+      "button": {
+        "label": "Get Free Consultation",
+        "link": "#consultation"
+      },
+      "backgroundImage": "/images/agency-cta-bg.jpg",
+      "overlay": true
+    },
+    "footer": {
+      "logo": {
+        "src": "/images/agency-logo-white.svg",
+        "alt": "Pixel Perfect Agency"
+      },
+      "section": {
+        "main": {
+          "title": "Pixel Perfect Agency",
+          "description": "Creating digital experiences that inspire, engage, and convert. Your vision, our expertise.",
+          "copyright": "© 2024 Pixel Perfect Agency. All rights reserved.",
+          "privacyAndPolicy": {
+            "label": "Privacy Policy",
+            "link": "/privacy"
+          },
+          "termsOfService": {
+            "label": "Terms of Service",
+            "link": "/terms"
+          }
+        },
+        "contact": {
+          "mail": "hello@pixelperfect.agency",
+          "phone": "+1 (555) 123-PIXEL",
+          "address": "789 Design Street, Creative District, NY 10002",
+          "hours": "Mon-Fri 9AM-6PM EST"
+        },
+        "social": [
+          { "label": "Dribbble", "link": "https://dribbble.com/pixelperfect", "icon": "dribbble" },
+          { "label": "Behance", "link": "https://behance.net/pixelperfect", "icon": "behance" },
+          { "label": "Instagram", "link": "https://instagram.com/pixelperfect", "icon": "instagram" },
+          { "label": "LinkedIn", "link": "https://linkedin.com/company/pixelperfect", "icon": "linkedin" }
+        ],
+        "services": [
+          { "label": "Brand Design", "link": "/services/branding" },
+          { "label": "Web Development", "link": "/services/web" },
+          { "label": "Digital Marketing", "link": "/services/marketing" },
+          { "label": "UI/UX Design", "link": "/services/design" }
+        ],
+        "quickLinks": [
+          { "label": "Portfolio", "link": "/portfolio" },
+          { "label": "Case Studies", "link": "/case-studies" },
+          { "label": "Blog", "link": "/blog" },
+          { "label": "Careers", "link": "/careers" }
+        ]
+      },
+      "newsletter": {
+        "title": "Creative Insights",
+        "description": "Get design tips, industry insights, and our latest work delivered to your inbox.",
+        "placeholder": "Enter your email",
+        "buttonText": "Subscribe",
+        "privacyText": "We value your privacy and creativity."
+      }
+    }
+  }
+}

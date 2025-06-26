@@ -17,12 +17,15 @@ import ImageInput from "@/components/form/image-input";
 import TextInput from "@/components/form/text-input";
 import { headerFromSchema } from "@/lib/validations";
 import ImageService from "@/lib/image-service";
+import ImageUploadService from "@/lib/image-service";
+import {useFormSubmit} from "@/hooks/useFormSubmit";
 
 export default function HeaderForm() {
     const params = useParams();
     const header = useSelector((state: layoutReducer) => state.layout.elements.header);
     const data = useSelector((state: layoutReducer) => state.layout);
     const dispatch = useDispatch();
+    const { isLoading, handleSubmit } = useFormSubmit();
 
     const defaultValues: z.infer<typeof headerFromSchema> = {
         heading: header?.heading || "",
@@ -45,102 +48,115 @@ export default function HeaderForm() {
         return imageElement ? imageElement.url : null;
     });
 
-    const isLoading = form.formState.isSubmitting;
-
-    const getImageBlob = async (url: string) => {
-        const blob = await fetch(url).then((r) => r.blob());
-        return blob;
-    };
-
-    const uploadImage = async (image: Blob) => {
-        try {
-            const url = await ImageService.upload(image);
-            dispatch(updateSection({
-                section: "header",
-                path: ["image"],
-                value: url,
-            }));
-            return url;
-        } catch (error) {
-            console.log("[IMAGE_UPLOAD_ERROR]", error);
-        }
-    };
-
-    async function onSubmit() {
-        try {
+    const onSubmit = async (values: z.infer<typeof headerFromSchema>) => {
+        await handleSubmit(async () => {
+            // Validate image
             if (!heroImage) {
-                form.setError("heroImage", { message: "Image is required" });
+                form.setError("heroImage", { message: "Hero image is required" });
+                throw new Error("Hero image is required");
             }
 
-            let url;
-            if (heroImage) {
-                url = await uploadImage(await getImageBlob(heroImage));
-            }
+            // Upload image
+            const imageUrl = await ImageUploadService.uploadImage(heroImage);
 
+            // Update data
             const newData = cloneDeep(data);
-            newData.elements.header = newData.elements.header || {};
-            newData.elements.header.image = url;
+            newData.elements.header = {
+                ...newData.elements.header,
+                ...values,
+                image: imageUrl,
+            };
 
+            // Save to backend
             await updateProjectLayoutAction(params.id as string, newData);
-        } catch (error) {
-            console.log("[HEADER_LAYOUT_SAVE_ERROR]", error);
-        }
-    }
+        }, "Header updated successfully!");
+    };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <ImageInput
-                    form={form}
-                    fieldname={`hero-image-${params.id}`}
-                    label="Hero Image"
-                    description="This will be the hero image for the header."
-                    src={header?.image}
-                    square
-                />
-                <TextInput
-                    form={form}
-                    fieldname="heading"
-                    onChange={(value) => dispatch(updateSection({ section: "header", path: ["heading"], value }))}
-                    label="Heading"
-                    placeholder="Your Heading"
-                    description="This will be the main text block of the header."
-                />
-                <TextInput
-                    form={form}
-                    fieldname="description"
-                    onChange={(value) => dispatch(updateSection({ section: "header", path: ["description"], value }))}
-                    label="Description"
-                    placeholder="Your Description"
-                    description="This will be the secondary text block of the header."
-                />
-                <div className="md:flex gap-4 w-full">
-                    <TextInput
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <div className="space-y-4">
+                    <h3 className="text-lg font-medium">Header Content</h3>
+                    
+                    <ImageInput
                         form={form}
-                        fieldname="ctaButton.label"
-                        onChange={(value) => dispatch(updateSection({ section: "header", path: ["ctaButton", "label"], value }))}
-                        label="Button Label"
-                        placeholder="CTA Button Label"
-                        description="This will be the label of your cta button."
+                        fieldname={`hero-image-${params.id}`}
+                        label="Hero Image"
+                        description="Upload a compelling hero image for your header section."
+                        src={header?.image}
+                        square
                     />
-                    <TextInput
-                        form={form}
-                        fieldname="ctaButton.link"
-                        onChange={(value) => dispatch(updateSection({ section: "header", path: ["ctaButton", "link"], value }))}
-                        label="Button Link"
-                        placeholder="CTA Button link"
-                        description="This will be the link of your cta button."
-                    />
+
+                    <div className="grid grid-cols-1 gap-4">
+                        <TextInput
+                            form={form}
+                            fieldname="heading"
+                            onChange={(value) => dispatch(updateSection({ 
+                                section: "header", 
+                                path: ["heading"], 
+                                value 
+                            }))}
+                            label="Heading"
+                            placeholder="Enter your main heading"
+                            description="The main headline that visitors will see first."
+                        />
+
+                        <TextInput
+                            form={form}
+                            fieldname="description"
+                            onChange={(value) => dispatch(updateSection({ 
+                                section: "header", 
+                                path: ["description"], 
+                                value 
+                            }))}
+                            label="Description"
+                            placeholder="Enter a compelling description"
+                            description="Supporting text that explains your value proposition."
+                        />
+                    </div>
                 </div>
-                <Button disabled={isLoading} type="submit">
-                    {isLoading && (
-                        <>
-                            <Loader2 size={16} className="animate-spin" />
-                            &nbsp;
-                        </>
-                    )}
-                    Save
-                </Button>
+
+                <div className="space-y-4">
+                    <h3 className="text-lg font-medium">Call to Action</h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <TextInput
+                            form={form}
+                            fieldname="ctaButton.label"
+                            onChange={(value) => dispatch(updateSection({ 
+                                section: "header", 
+                                path: ["ctaButton", "label"], 
+                                value 
+                            }))}
+                            label="Button Text"
+                            placeholder="Get Started"
+                            description="The text displayed on your CTA button."
+                        />
+
+                        <TextInput
+                            form={form}
+                            fieldname="ctaButton.link"
+                            onChange={(value) => dispatch(updateSection({ 
+                                section: "header", 
+                                path: ["ctaButton", "link"], 
+                                value 
+                            }))}
+                            label="Button Link"
+                            placeholder="https://example.com"
+                            description="Where the button should redirect users."
+                        />
+                    </div>
+                </div>
+
+                <div className="flex justify-end space-x-2">
+                    <Button type="button" variant="outline" onClick={() => form.reset()}>
+                        Reset
+                    </Button>
+                    <Button type="submit" disabled={isLoading}>
+                        {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        Save Header
+                    </Button>
+                </div>
             </form>
         </Form>
     );

@@ -1,96 +1,214 @@
 {
-  "id": "restaurant",
-  "name": "Restaurant Template",
-  "description": "Perfect for restaurants, cafes, and food businesses",
-  "category": "food",
+  "id": "restaurant-classic",
+  "name": "Classic Restaurant",
+  "description": "Elegant restaurant template with menu showcase, reservations, and contact information. Perfect for fine dining establishments.",
+  "category": "restaurant",
+  "tags": ["restaurant", "food", "dining", "elegant", "menu", "reservations"],
+  "author": "Template Studio",
+  "version": "1.2.0",
+  "createdAt": "2024-01-15T10:00:00Z",
+  "updatedAt": "2024-02-20T14:30:00Z",
+  "isPremium": false,
+  "rating": 4.8,
+  "usageCount": 156,
+  "thumbnail": "/templates/restaurant-classic-thumb.jpg",
+  "previewUrl": "/templates/restaurant-classic/preview",
   "styles": {
-    "primaryColor": "#d97706",
-    "secondaryColor": "#fef3c7"
+    "primaryColor": "#d4af37",
+    "secondaryColor": "#2c1810",
+    "accentColor": "#ff6b35",
+    "backgroundColor": "#faf8f5",
+    "textColor": "#2c1810",
+    "fontFamily": "Playfair Display, serif",
+    "borderRadius": "4px",
+    "spacing": "24px"
   },
   "elements": {
     "navbar": {
       "logo": {
-        "src": ""
+        "src": "/images/restaurant-logo.png",
+        "alt": "Bella Vista Restaurant"
       },
       "links": [
+        { "label": "Home", "link": "#home" },
         { "label": "Menu", "link": "#menu" },
         { "label": "About", "link": "#about" },
+        { "label": "Gallery", "link": "#gallery" },
         { "label": "Contact", "link": "#contact" }
       ],
       "actions": [
-        { "label": "Reserve Table", "link": "#reserve" }
-      ]
+        { 
+          "label": "Reserve Table", 
+          "link": "#reservations", 
+          "type": "primary" 
+        }
+      ],
+      "sticky": true,
+      "transparent": true
     },
     "header": {
-      "heading": "Welcome to [Your Restaurant Name]",
-      "description": "Experience the finest dining with our carefully crafted menu and warm atmosphere. Perfect for any occasion.",
-      "image": "",
+      "heading": "Bella Vista Restaurant",
+      "subheading": "Authentic Italian Cuisine",
+      "description": "Experience the finest Italian dining with our chef's special recipes passed down through generations. Fresh ingredients, traditional methods, unforgettable flavors.",
+      "image": "/images/restaurant-hero.jpg",
+      "backgroundImage": "/images/restaurant-bg.jpg",
+      "overlay": true,
+      "alignment": "center",
       "ctaButton": {
         "label": "View Menu",
-        "link": "#menu"
+        "link": "#menu",
+        "style": "primary"
+      },
+      "secondaryButton": {
+        "label": "Make Reservation",
+        "link": "#reservations",
+        "style": "secondary"
       }
     },
-    "services": {
+    "features": {
       "header": {
-        "title": "Our Services",
-        "description": "Discover what makes us special"
+        "title": "Why Choose Bella Vista",
+        "description": "What makes our restaurant special"
       },
-      "section": [
+      "items": [
         {
-          "src": "",
-          "title": "Fine Dining",
-          "description": "Elegant atmosphere with gourmet cuisine",
-          "link": "#dining"
+          "icon": "👨‍🍳",
+          "title": "Expert Chefs",
+          "description": "Our master chefs bring authentic Italian flavors to every dish"
         },
         {
-          "src": "",
-          "title": "Catering",
-          "description": "Professional catering for events",
-          "link": "#catering"
+          "icon": "🌿",
+          "title": "Fresh Ingredients",
+          "description": "We source the finest local and imported ingredients daily"
         },
         {
-          "src": "",
-          "title": "Private Events",
-          "description": "Perfect venue for special occasions",
-          "link": "#events"
+          "icon": "🍷",
+          "title": "Fine Wine Selection",
+          "description": "Curated wine list with perfect pairings for every meal"
+        },
+        {
+          "icon": "🕯️",
+          "title": "Romantic Ambiance",
+          "description": "Intimate dining atmosphere perfect for special occasions"
         }
       ]
     },
+    "services": {
+      "header": {
+        "title": "Our Specialties",
+        "description": "Signature dishes that define our culinary excellence"
+      },
+      "section": [
+        {
+          "title": "Pasta Perfection",
+          "description": "Handmade pasta with traditional sauces",
+          "image": "/images/pasta-special.jpg",
+          "price": "$18-28"
+        },
+        {
+          "title": "Wood-Fired Pizza",
+          "description": "Authentic Neapolitan style pizza from our brick oven",
+          "image": "/images/pizza-special.jpg",
+          "price": "$16-24"
+        },
+        {
+          "title": "Fresh Seafood",
+          "description": "Daily catch prepared with Mediterranean flair",
+          "image": "/images/seafood-special.jpg",
+          "price": "$24-42"
+        }
+      ]
+    },
+    "testimonials": {
+      "header": {
+        "title": "What Our Guests Say",
+        "description": "Reviews from our valued customers"
+      },
+      "items": [
+        {
+          "name": "Sarah Johnson",
+          "role": "Food Critic",
+          "content": "Bella Vista offers an authentic Italian experience that transports you straight to Tuscany. Every dish is a masterpiece!",
+          "rating": 5,
+          "avatar": "/images/testimonial-1.jpg"
+        },
+        {
+          "name": "Michael Chen",
+          "role": "Regular Customer",
+          "content": "The best Italian restaurant in the city. The pasta is incredible and the service is always exceptional.",
+          "rating": 5,
+          "avatar": "/images/testimonial-2.jpg"
+        },
+        {
+          "name": "Emily Rodriguez",
+          "role": "Wedding Planner",
+          "content": "We've held several events here. The food, atmosphere, and staff always exceed expectations.",
+          "rating": 5,
+          "avatar": "/images/testimonial-3.jpg"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready for an Unforgettable Dining Experience?",
+      "description": "Reserve your table today and taste the difference that passion makes",
+      "button": {
+        "label": "Make Reservation",
+        "link": "#reservations"
+      },
+      "backgroundImage": "/images/restaurant-cta-bg.jpg",
+      "overlay": true
+    },
     "footer": {
       "logo": {
-        "src": ""
+        "src": "/images/restaurant-logo-white.png",
+        "alt": "Bella Vista Restaurant"
       },
       "section": {
         "main": {
-          "title": "[Your Restaurant Name]",
-          "description": "Bringing you the best dining experience since [Year]",
-          "ctaButton": {
-            "label": "Make Reservation",
-            "link": "#reserve"
-          },
-          "copyright": "© 2024 [Your Restaurant Name]. All rights reserved.",
+          "title": "Bella Vista Restaurant",
+          "description": "Bringing authentic Italian flavors to your table since 1985. Join us for an unforgettable culinary journey.",
+          "copyright": "© 2024 Bella Vista Restaurant. All rights reserved.",
           "privacyAndPolicy": {
             "label": "Privacy Policy",
             "link": "/privacy"
+          },
+          "termsOfService": {
+            "label": "Terms of Service",
+            "link": "/terms"
           }
         },
         "contact": {
-          "mail": "info@yourrestaurant.com",
-          "phone": "+1 (555) 123-4567",
-          "address": "123 Main Street, City, State 12345"
+          "mail": "info@bellavista.com",
+          "phone": "+1 (555) 123-FOOD",
+          "address": "123 Culinary Street, Food District, NY 10001",
+          "hours": "Mon-Thu 5PM-10PM, Fri-Sat 5PM-11PM, Sun 4PM-9PM"
         },
         "social": [
-          { "label": "Facebook", "link": "https://facebook.com" },
-          { "label": "Instagram", "link": "https://instagram.com" },
-          { "label": "Twitter", "link": "https://twitter.com" }
+          { "label": "Instagram", "link": "https://instagram.com/bellavista", "icon": "instagram" },
+          { "label": "Facebook", "link": "https://facebook.com/bellavista", "icon": "facebook" },
+          { "label": "Twitter", "link": "https://twitter.com/bellavista", "icon": "twitter" },
+          { "label": "Yelp", "link": "https://yelp.com/bellavista", "icon": "yelp" }
         ],
         "services": [
-          { "label": "Dining", "link": "#dining" },
-          { "label": "Catering", "link": "#catering" },
-          { "label": "Events", "link": "#events" },
-          { "label": "Contact", "link": "#contact" }
+          { "label": "Dine In", "link": "/dine-in" },
+          { "label": "Takeout", "link": "/takeout" },
+          { "label": "Catering", "link": "/catering" },
+          { "label": "Private Events", "link": "/events" }
+        ],
+        "quickLinks": [
+          { "label": "Menu", "link": "/menu" },
+          { "label": "Reservations", "link": "/reservations" },
+          { "label": "Gift Cards", "link": "/gift-cards" },
+          { "label": "Careers", "link": "/careers" }
         ]
+      },
+      "newsletter": {
+        "title": "Stay Connected",
+        "description": "Get updates on special events, new menu items, and exclusive offers.",
+        "placeholder": "Enter your email address",
+        "buttonText": "Subscribe",
+        "privacyText": "We respect your privacy and never share your information."
       }
     }
   }
-} 
+}

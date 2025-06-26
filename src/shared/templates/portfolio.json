@@ -1,0 +1,222 @@
+{
+  "id": "designer-portfolio",
+  "name": "Designer Portfolio",
+  "description": "Minimalist portfolio template perfect for designers, artists, photographers, and creative professionals to showcase their work.",
+  "category": "portfolio",
+  "tags": ["portfolio", "designer", "creative", "minimalist", "photography", "artist"],
+  "author": "Portfolio Pro",
+  "version": "1.3.0",
+  "createdAt": "2024-02-10T14:30:00Z",
+  "updatedAt": "2024-03-05T10:15:00Z",
+  "isPremium": false,
+  "rating": 4.6,
+  "usageCount": 234,
+  "thumbnail": "/templates/portfolio-thumb.jpg",
+  "previewUrl": "/templates/portfolio/preview",
+  "styles": {
+    "primaryColor": "#000000",
+    "secondaryColor": "#f5f5f5",
+    "accentColor": "#6366f1",
+    "backgroundColor": "#ffffff",
+    "textColor": "#1a1a1a",
+    "fontFamily": "Inter, sans-serif",
+    "borderRadius": "0px",
+    "spacing": "40px"
+  },
+  "elements": {
+    "navbar": {
+      "logo": {
+        "src": "/images/portfolio-logo.svg",
+        "alt": "Alex Morgan"
+      },
+      "links": [
+               { "label": "Work", "link": "#work" },
+        { "label": "About", "link": "#about" },
+        { "label": "Services", "link": "#services" },
+        { "label": "Contact", "link": "#contact" }
+      ],
+      "actions": [
+        { 
+          "label": "Hire Me", 
+          "link": "#contact", 
+          "type": "primary" 
+        }
+      ],
+      "sticky": true,
+      "transparent": true
+    },
+    "header": {
+      "heading": "Alex Morgan",
+      "subheading": "Creative Designer & Visual Artist",
+      "description": "I create meaningful digital experiences through thoughtful design and visual storytelling. Specializing in brand identity, web design, and creative direction.",
+      "image": "/images/portfolio-hero.jpg",
+      "backgroundImage": "",
+      "overlay": false,
+      "alignment": "left",
+      "ctaButton": {
+        "label": "View My Work",
+        "link": "#work",
+        "style": "primary"
+      },
+      "secondaryButton": {
+        "label": "Download Resume",
+        "link": "/resume.pdf",
+        "style": "secondary"
+      }
+    },
+    "features": {
+      "header": {
+        "title": "What I Do",
+        "description": "Specializing in design that makes a difference"
+      },
+      "items": [
+        {
+          "icon": "🎨",
+          "title": "Brand Identity",
+          "description": "Creating cohesive visual identities that tell your brand's story"
+        },
+        {
+          "icon": "💻",
+          "title": "Web Design",
+          "description": "Designing user-friendly websites that convert visitors into customers"
+        },
+        {
+          "icon": "📱",
+          "title": "Mobile Design",
+          "description": "Crafting intuitive mobile experiences for iOS and Android"
+        },
+        {
+          "icon": "🎬",
+          "title": "Creative Direction",
+          "description": "Leading creative projects from concept to completion"
+        }
+      ]
+    },
+    "services": {
+      "header": {
+        "title": "Selected Work",
+        "description": "A showcase of recent projects and creative explorations"
+      },
+      "section": [
+        {
+          "title": "Brand Identity - Wellness Co.",
+          "description": "Complete brand redesign for a health and wellness startup",
+          "image": "/images/project-wellness.jpg",
+          "category": "Branding",
+          "year": "2024",
+          "client": "Wellness Co.",
+          "tags": ["Branding", "Logo Design", "Guidelines"]
+        },
+        {
+          "title": "E-commerce Platform - FashionHub",
+          "description": "Modern e-commerce platform with focus on user experience",
+          "image": "/images/project-fashion.jpg",
+          "category": "Web Design",
+          "year": "2024",
+          "client": "FashionHub",
+          "tags": ["E-commerce", "UI/UX", "Mobile"]
+        },
+        {
+          "title": "Mobile App - TaskFlow",
+          "description": "Productivity app design with intuitive user interface",
+          "image": "/images/project-taskflow.jpg",
+          "category": "Mobile Design",
+          "year": "2023",
+          "client": "TaskFlow Inc.",
+          "tags": ["Mobile App", "UI/UX", "Productivity"]
+        },
+        {
+          "title": "Website Redesign - TechCorp",
+          "description": "Corporate website redesign with modern aesthetic",
+          "image": "/images/project-techcorp.jpg",
+          "category": "Web Design",
+          "year": "2023",
+          "client": "TechCorp",
+          "tags": ["Website", "Corporate", "Responsive"]
+        }
+      ]
+    },
+    "testimonials": {
+      "header": {
+        "title": "Client Testimonials",
+        "description": "What clients say about working with me"
+      },
+      "items": [
+        {
+          "name": "Sarah Williams",
+          "role": "Founder",
+          "company": "Wellness Co.",
+          "content": "Alex delivered exactly what we needed. The brand identity perfectly captures our company values and has helped us stand out in a competitive market.",
+          "rating": 5,
+          "avatar": "/images/client-sarah.jpg"
+        },
+        {
+          "name": "Mark Johnson",
+          "role": "Product Manager",
+          "company": "TaskFlow Inc.",
+          "content": "Working with Alex was a pleasure. The app design is beautiful, intuitive, and our user engagement has increased significantly since launch.",
+          "rating": 5,
+          "avatar": "/images/client-mark.jpg"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Let's Work Together",
+      "description": "Have a project in mind? I'd love to hear about it and discuss how we can bring your vision to life.",
+      "button": {
+        "label": "Start a Project",
+        "link": "#contact"
+      },
+      "backgroundImage": "/images/portfolio-cta-bg.jpg",
+      "overlay": true
+    },
+    "footer": {
+      "logo": {
+        "src": "/images/portfolio-logo-dark.svg",
+        "alt": "Alex Morgan"
+      },
+      "section": {
+        "main": {
+          "title": "Alex Morgan",
+          "description": "Creative designer passionate about crafting meaningful digital experiences. Available for freelance projects and collaborations.",
+          "copyright": "© 2024 Alex Morgan. All rights reserved.",
+          "privacyAndPolicy": {
+            "label": "Privacy Policy",
+            "link": "/privacy"
+          }
+        },
+        "contact": {
+          "mail": "hello@alexmorgan.design",
+          "phone": "+1 (555) 123-DESIGN",
+          "address": "New York, NY",
+          "hours": "Available for projects worldwide"
+        },
+        "social": [
+          { "label": "Dribbble", "link": "https://dribbble.com/alexmorgan", "icon": "dribbble" },
+          { "label": "Behance", "link": "https://behance.net/alexmorgan", "icon": "behance" },
+          { "label": "Instagram", "link": "https://instagram.com/alexmorgan.design", "icon": "instagram" },
+          { "label": "LinkedIn", "link": "https://linkedin.com/in/alexmorgan", "icon": "linkedin" }
+        ],
+        "services": [
+          { "label": "Brand Identity", "link": "/services/branding" },
+          { "label": "Web Design", "link": "/services/web" },
+          { "label": "Mobile Design", "link": "/services/mobile" },
+          { "label": "Creative Direction", "link": "/services/direction" }
+        ],
+        "quickLinks": [
+          { "label": "Portfolio", "link": "/work" },
+          { "label": "About", "link": "/about" },
+          { "label": "Process", "link": "/process" },
+          { "label": "Blog", "link": "/blog" }
+        ]
+      },
+      "newsletter": {
+        "title": "Design Updates",
+        "description": "Get notified about new projects and design insights.",
+        "placeholder": "Enter your email",
+        "buttonText": "Subscribe",
+        "privacyText": "No spam, just design inspiration."
+      }
+    }
+  }
+}
